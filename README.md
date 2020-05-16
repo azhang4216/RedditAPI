@@ -2,6 +2,7 @@
 
 This is a project that uses tweepy and praw APIs to tweet out the top-rated (hottest) memes onto a twitter account.
 During quarantine, I wanted to make something that could uplift people and make people smile. And I thought that memes are a great universal connector for laughter and joy, so I wanted to bring quality memes to more people on different social media platforms using this project.
+The twitter handle is: @RedditFunniest, or, you can access the Twitter page via: https://twitter.com/RedditFunniest.
 
 ## Getting Started 🚀
 
@@ -10,45 +11,39 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites 💻
 
 For this project to run, you will need to install praw, tweepy, and python-dotenv packages.
-These packages can be installed by going to Settings/Preferences > Interpreter Settings. From there, click the "+" button and search for those packages in the search bar, and install. 
+These packages can be installed by going to Settings/Preferences > Interpreter Settings. 
+From there, click the "+" button and search for those packages in the search bar, and install. 
 
 ### Installing 
 
-A step by step series of examples that tell you how to get a development env running
+I have already provided the code to access the .env file in API.py. You should be able to access the development env without adding further lines of code, so long as you have dot-env and other proper packages installed installed.
 
-Say what the step will be
+## Implementation Explained
 
-```
-Give the example
-```
-
-And repeat
+The tests are relatively straightforward: every time you run the code, a new tweet should pop up in the twitter handle citing the reddit meme's caption and creditting the author. 
+You can specify from which subreddit you would like to pull from by going to line 59 and changing the string parameter to the desired subreddit you would like to tweet your meme from. In my case, I put:
 
 ```
-until finished
+subreddit = reddit.subreddit("WholesomeMemes") 
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+The API then takes the "hottest" rated meme from your specified subreddit and checks if it has already been posted (using the posted_url.txt to keep check). Then, the hottest meme that has not been posted on the account will be tweeted out. 
+
+Note: GIF format media is not supported, and neither are videos. Only images (our goal is memes). This means the code will skip over any videos or gifs, and get the next "hottest" meme from the subreddit.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+You can check if everything is running smoothly by going to https://twitter.com/RedditFunniest and refreshing to see if the tweet pops up, like so:
 
-### Break down into end to end tests
+![](Images/Successful_Tweet.png)
 
-Explain what these tests test and why
+If everything works, you should be able to run the code, and see in your console "meme tweeted" followed by exit code 0. 
 
-```
-Give an example
-```
+To check if it tweeted from your subreddit, and tweeted from the hottest criteria, check the subreddit page for your indicated subreddit to see if the redditer name, caption, and meme image match. If they do, then it's a success! Here is what it should look like (I used the r/WholesomeMemes subreddit):
 
-### And coding style tests
+![](Images/Matches_Reddit.png)
 
-Explain what these tests test and why
-
-```
-Give an example
-```
+Note that if the program works correctly, the "stickied" post(s) at the top (messages by admin) are not added.
 
 ## Acknowledgments 🙏
 
