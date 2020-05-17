@@ -10,15 +10,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites 💻
 
-For this project to run, you will need to install praw, tweepy, and python-dotenv packages.
-These packages can be installed by going to Settings/Preferences > Interpreter Settings. 
+For this project to run, you will need to install praw v7.0.0 and tweepy v3.8.0 packages.
+I am using Python v3.7, so keep in mind that packages may be outdated/unavailable if installed on other versions.
+I used PyCharm. In PyCharm, these packages can be installed by going to Settings/Preferences > Interpreter Settings. 
 From there, click the "+" button and search for those packages in the search bar, and install. 
 
 ### Installing 
 
 In order to run the code yourself, you must put in your own access codes, ie:
 * Reddit client ID
-* Reddit client Secret
+* Reddit client secret
 * Reddit user agent
 * Reddit account username
 * Reddit account password
@@ -36,7 +37,7 @@ https://docs.inboundnow.com/guide/create-twitter-application/
 ## Implementation Explained
 
 The tests are relatively straightforward: every time you run the code, a new tweet should pop up in the twitter handle citing the reddit meme's caption and creditting the author. 
-You can specify from which subreddit you would like to pull from by going to line 59 and changing the string parameter to the desired subreddit you would like to tweet your meme from. In my case, I put:
+You can specify from which subreddit you would like to pull memes from by going to the specified line on API.py and changing the string parameter to the desired subreddit. In my case, I put:
 
 ```
 subreddit = reddit.subreddit("WholesomeMemes") 
@@ -48,7 +49,7 @@ Note: GIF format media is not supported, and neither are videos. Only images (ou
 
 ## Running the tests
 
-You can check if everything is running smoothly by going to https://twitter.com/RedditFunniest and refreshing to see if the tweet pops up, like so:
+You can check if everything is running smoothly by going to the twitter account you put into the program and refreshing to see if the tweet pops up, like so:
 
 ![](Images/Successful_Tweet.png)
 
