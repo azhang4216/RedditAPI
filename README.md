@@ -16,7 +16,22 @@ From there, click the "+" button and search for those packages in the search bar
 
 ### Installing 
 
-I have already provided the code to access the .env file in API.py. You should be able to access the development env without adding further lines of code, so long as you have dot-env and other proper packages installed installed.
+In order to run the code yourself, you must put in your own access codes, ie:
+* Reddit client ID
+* Reddit client Secret
+* Reddit user agent
+* Reddit account username
+* Reddit account password
+
+* Twitter account username
+* Twitter account password
+* Twitter consumer key
+* Twitter consumer secret
+* Twitter access token
+* Twitter secret access token
+
+If you do not have any of these keys or need help signing up for your own API keys, please visit the following links for guideline:
+https://docs.inboundnow.com/guide/create-twitter-application/
 
 ## Implementation Explained
 
