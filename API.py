@@ -6,19 +6,13 @@ Date: May 15, 2020
 Sources Consulted: PyMoondra, Reddit API description page,
 Twitter API Developer Info Page, https://stackoverflow.com/questions/31748444/how-to-update-twitter-status-with-image-using-image-url-in-tweepy
 https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
-Packages installed: praw, tweepy, python-dotenv
+Packages installed: praw, tweepy
 '''
 import praw
 import tweepy
 import requests
 import time
 import os
-from os.path import join, dirname
-from dotenv import load_dotenv
-
-# Accessing variables from .env file
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
 
 client_id = os.environ.get('CLIENT_ID')
 client_secret = os.environ.get('CLIENT_SECRET')
@@ -41,6 +35,7 @@ def login_reddit():
         return red
 
     except Exception as e:
+        print("Failed to log into Reddit. Make sure Reddit credentials are valid.")
         return None
 
 # creates and returns twitter object
@@ -51,6 +46,7 @@ def login_twitter():
         return twit
 
     except Exception as e:
+        print("Failed to log into Twitter. Make sure Twitter credentials are valid.")
         return None
 
 def tweet_meme():
@@ -121,7 +117,7 @@ def is_supported(url):
 
 # helper function to is_supported(url) that checks if image is gif (unsupported)
 def is_gif(url):
-    if url[-3] == "g" and url[-2]== "i" and url[-1] == "f":
+    if url[-3] == "g" and url[-2] == "i" and url[-1] == "f":
         return True
     return False
 
