@@ -12,6 +12,8 @@ import praw
 import tweepy
 import requests
 import os
+from dotenv import load_dotenv   #for python-dotenv method
+load_dotenv()                    #for python-dotenv method
 
 client_id = os.environ.get('CLIENT_ID')
 client_secret = os.environ.get('CLIENT_SECRET')
@@ -77,8 +79,6 @@ def tweet_meme():
             # makes a message and breaks when criteria met
             message = '\"' + submission.title + '\"' + ' post by ' + str(submission.author)
             break
-
-    print(submission.name)
 
     if message == "":
         print("Sorry, too many memes from this reddit posted, or the posts are not supported.")
