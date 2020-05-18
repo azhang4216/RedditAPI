@@ -11,7 +11,6 @@ Packages installed: praw, tweepy
 import praw
 import tweepy
 import requests
-import time
 import os
 
 client_id = os.environ.get('CLIENT_ID')
@@ -26,6 +25,8 @@ consumer_key = os.environ.get('CONSUMER_KEY')
 consumer_secret = os.environ.get('CONSUMER_SECRET')
 access_token = os.environ.get('ACCESS_TOKEN')
 access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
+
+supported = ["jpg", "png", "jpeg"]
 
 # creates and returns reddit object
 def login_reddit():
@@ -52,14 +53,23 @@ def login_twitter():
 def tweet_meme():
     # creates reddit and subreddit objects
     reddit = login_reddit()
-    subreddit = reddit.subreddit("WholesomeMemes") # wholesome meme subreddit, can change to desired subreddit
+    if reddit == None:
+        return
+    try:
+        subreddit = reddit.subreddit("WholesomeMemes") # wholesome meme subreddit, can change to desired subreddit
+    except Exception as e:
+        print("We can't find that subreddit. Please try again, and check if the subreddit is accessible to your account.")
 
     # creates twitter objects
     twitter = login_twitter()
+    if twitter == None:
+        return
     t_api = tweepy.API(twitter)
 
     # filters posts based on hotness
     hot = subreddit.hot(limit=50)
+
+    message = ""
 
     for submission in hot:
         # checks if it is a "stickied" post, has been posted, and is a supported format for posting
@@ -68,14 +78,20 @@ def tweet_meme():
             message = '\"' + submission.title + '\"' + ' post by ' + str(submission.author)
             break
 
-    # creates a jpg file for the meme image to come
+    print(submission.name)
+
+    if message == "":
+        print("Sorry, too many memes from this reddit posted, or the posts are not supported.")
+        return
+
+    # creates an appropriate file for the meme image to come
     meme_image = 'temp.jpg'
 
     request = requests.get(submission.url, stream=True)
     # print(submission.url)
 
     # checks if request code is valid and if submission url was successfully a new one
-    if request.status_code == 200 and (not check_if_string_in_file(submission.url)):
+    if request.status_code == 200:
         # keeps track of tweeting out of submission in posted_url.txt
         modify_visited(submission.url)
 
@@ -111,14 +127,9 @@ def modify_visited(url):
 # checks if url of image is a supported format for tweeting
 def is_supported(url):
     # videos (unsupported) do not have a "." as the 4th last character in their url
-    if url[-4] != "." or is_gif(url):
-        return False
-    return True
-
-# helper function to is_supported(url) that checks if image is gif (unsupported)
-def is_gif(url):
-    if url[-3] == "g" and url[-2] == "i" and url[-1] == "f":
-        return True
+    for format in supported:
+        if url.endswith(format):
+            return True
     return False
 
 tweet_meme()
