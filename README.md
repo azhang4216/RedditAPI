@@ -17,7 +17,7 @@ From there, click the "+" button and search for those packages in the search bar
 
 ### Installing 
 
-In order to run the code yourself, you must put in your own access codes, ie:
+I have emailed / sent over the API keys as requested. They should contain:
 * Reddit client ID
 * Reddit client secret
 * Reddit user agent
@@ -31,12 +31,11 @@ In order to run the code yourself, you must put in your own access codes, ie:
 * Twitter access token
 * Twitter secret access token
 
-If you do not have any of these keys or need help signing up for your own API keys, please visit the following links for guideline:
-https://docs.inboundnow.com/guide/create-twitter-application/
+If you don't have them, please email me at zi.lan.zhang.23@dartmouth.edu and I will email them over ASAP.
 
 ## Implementation Explained
 
-The tests are relatively straightforward: every time you run the code, a new tweet should pop up in the twitter handle citing the reddit meme's caption and creditting the author. 
+The tests are relatively straightforward: every time you run the code, a new tweet should pop up in my twitter page @RedditFunniest citing the reddit meme's caption and creditting the author. 
 You can specify from which subreddit you would like to pull memes from by going to the specified line on API.py and changing the string parameter to the desired subreddit. In my case, I put:
 
 ```
