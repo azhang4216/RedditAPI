@@ -17,7 +17,7 @@ From there, click the "+" button and search for those packages in the search bar
 
 ### Installing 
 
-I have emailed / sent over the API keys as requested. They should contain:
+API keys & credentials required:
 * Reddit client ID
 * Reddit client secret
 * Reddit user agent
@@ -31,7 +31,7 @@ I have emailed / sent over the API keys as requested. They should contain:
 * Twitter access token
 * Twitter secret access token
 
-If you don't have them, please email me at zi.lan.zhang.23@dartmouth.edu and I will email them over ASAP.
+Please get your own API keys and credentials for this code. This is required for the code to run. If you are an employer and would like to see how the code works, please email me at zi.lan.zhang.23@dartmouth.edu and I will email my credentials over ASAP.
 
 ## Implementation Explained
 
