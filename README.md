@@ -31,7 +31,7 @@ API keys & credentials required:
 * Twitter access token
 * Twitter secret access token
 
-Please get your own API keys and credentials for this code. This is required for the code to run. If you are an employer and would like to see how the code works, please email me at zi.lan.zhang.23@dartmouth.edu and I will email my credentials over ASAP.
+Please get your own API keys and credentials for this code. This is required for the code to run. If you are an employer and would like to see how the code works, please email me at zi.lan.zhang.23@dartmouth.edu and I will be happy to explain more, or to provide some credentials for reference.
 
 ## Implementation Explained
 
